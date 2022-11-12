@@ -4,7 +4,7 @@
 // Quick Play - developed by unvsDev
 // Allow end-users to install scripts seamlessly
 
-const SCRIPT_VERSION = "1.0"
+const SCRIPT_VERSION = "1.0.1"
 let fm = FileManager.iCloud()
 const DATA_PATH = fm.documentsDirectory() + "/quickPlay.json"
 const CACHE_PATH = fm.documentsDirectory() + "/quickPlayCache.json"
@@ -36,7 +36,7 @@ async function checkFilePath(destinationPath){
 let queryInput = args.queryParameters
 if(queryInput.type == "get" || queryInput.type == "update" || queryInput.type == "replace"){
   if(queryInput.fromurl != undefined){
-    let script = await new Request(queryInput.fromurl).loadString()
+    let script = await new Request(encodeURI(queryInput.fromurl)).loadString()
     if(script == "404: Not Found"){
       // Github Gist URLError
       throw new Error("파일이 유효하지 않습니다.")
@@ -52,6 +52,8 @@ if(queryInput.type == "get" || queryInput.type == "update" || queryInput.type ==
     let response = await alert.presentAlert()
     if(response == -1){ return 0 }
     
+    scriptName = alert.textFieldValue()
+    if(scriptName == ""){ throw new Error("파일 이름이 올바른 형식이 아닙니다.") }
     let scriptPath = `${fm.documentsDirectory()}/${scriptName}`
     if(queryInput.type == "get"){
       if(await checkFilePath(scriptPath) == -1){ throw new Error("사용자가 파일 설치를 거부했습니다.") }
