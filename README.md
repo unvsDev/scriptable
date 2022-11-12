@@ -7,7 +7,7 @@
 </br>
 Scriptable 파일을 손쉽게 설치하고, 각종 작업을 수행할 수 있습니다. 외부 URL Scheme을 지원해 목표하는 작업 흐름을 최종 사용자에게 빠르게 배포할 수 있습니다.
 
-* [여기](https://github.com/unvsDev/scriptable/releases/download/1.0/QuickPlay.js)를 눌러 기기에 QuickPlay를 설치할 수 있습니다.
+* [여기](https://github.com/unvsDev/scriptable/releases/download/1.0.1/QuickPlay.js)를 눌러 기기에 QuickPlay를 설치할 수 있습니다.
 
 ### Supported Action
 ### 설치, 업데이트 및 교체
